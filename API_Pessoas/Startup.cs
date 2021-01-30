@@ -1,7 +1,9 @@
+using API_Pessoas.Model.Context;
 using API_Pessoas.Services;
 using API_Pessoas.Services.Implementations;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -20,9 +22,16 @@ namespace API_Pessoas
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddControllers();
+
+            //Adicionando DbContext
+            var connection = Configuration["MySqlConnection:MySqlConnectionString"];
+            services.AddDbContext<MySqlContext>(options => options.UseMySql(connection));
+
+            //Injections
             services.AddScoped<IPessoaService, PessoaServiceImplementation>();
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
