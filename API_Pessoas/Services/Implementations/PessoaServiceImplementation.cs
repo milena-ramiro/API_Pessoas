@@ -19,13 +19,36 @@ namespace API_Pessoas.Services.Implementations
 
         public tbPessoa Create(tbPessoa person)
         {
-            _context.Add(person);
+            try
+            {
+                _context.Add(person);
+                _context.SaveChanges();
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+
             return person;
+
         }
 
         public void Delete(long id)
         {
-            _context.Remove(id);
+            var result = _context.Pessoa.Where(p => p.id == (id)).FirstOrDefault();
+
+            if (result != null)
+            {
+                try
+                {
+                    _context.Pessoa.Remove(result);
+                    _context.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
         }
 
         public List<tbPessoa> FindAll()
@@ -35,13 +58,37 @@ namespace API_Pessoas.Services.Implementations
 
         public tbPessoa FindByID(long id)
         {
-            return _context.Pessoa.Find(id);
+            return _context.Pessoa.Where(p => p.id == id).FirstOrDefault();
         }
 
         public tbPessoa Update(tbPessoa person)
         {
-            _context.Update(person);
-            return person;
+            var result = _context.Pessoa.Where(p => p.id == person.id).FirstOrDefault();
+
+            if(result != null)
+            {
+                try
+                {
+                    _context.Entry(result).CurrentValues.SetValues(person);
+                    _context.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+                return person;
+            }
+            else
+            {
+                return null;
+            }
+            
         }
+
+        private bool Exists(long id)
+        {
+            return _context.Pessoa.Any(p => p.id.Equals(id));
+        }
+
     }
 }

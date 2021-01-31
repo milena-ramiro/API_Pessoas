@@ -16,7 +16,6 @@ C:\Users\milen\OneDrive\Documentos\Projetos\API_Pessoas\API_Pessoas\bin\Debug\ne
 C:\Users\milen\OneDrive\Documentos\Projetos\API_Pessoas\API_Pessoas\bin\Debug\net5.0\Newtonsoft.Json.dll
 C:\Users\milen\OneDrive\Documentos\Projetos\API_Pessoas\API_Pessoas\bin\Debug\net5.0\Pomelo.EntityFrameworkCore.MySql.dll
 C:\Users\milen\OneDrive\Documentos\Projetos\API_Pessoas\API_Pessoas\bin\Debug\net5.0\Pomelo.JsonObject.dll
-C:\Users\milen\OneDrive\Documentos\Projetos\API_Pessoas\API_Pessoas\obj\Debug\net5.0\API_Pessoas.csprojAssemblyReference.cache
 C:\Users\milen\OneDrive\Documentos\Projetos\API_Pessoas\API_Pessoas\obj\Debug\net5.0\API_Pessoas.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\milen\OneDrive\Documentos\Projetos\API_Pessoas\API_Pessoas\obj\Debug\net5.0\API_Pessoas.AssemblyInfoInputs.cache
 C:\Users\milen\OneDrive\Documentos\Projetos\API_Pessoas\API_Pessoas\obj\Debug\net5.0\API_Pessoas.AssemblyInfo.cs
@@ -31,3 +30,4 @@ C:\Users\milen\OneDrive\Documentos\Projetos\API_Pessoas\API_Pessoas\obj\Debug\ne
 C:\Users\milen\OneDrive\Documentos\Projetos\API_Pessoas\API_Pessoas\obj\Debug\net5.0\ref\API_Pessoas.dll
 C:\Users\milen\OneDrive\Documentos\Projetos\API_Pessoas\API_Pessoas\obj\Debug\net5.0\API_Pessoas.pdb
 C:\Users\milen\OneDrive\Documentos\Projetos\API_Pessoas\API_Pessoas\obj\Debug\net5.0\API_Pessoas.genruntimeconfig.cache
+C:\Users\milen\OneDrive\Documentos\Projetos\API_Pessoas\API_Pessoas\obj\Debug\net5.0\API_Pessoas.csprojAssemblyReference.cache

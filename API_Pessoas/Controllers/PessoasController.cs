@@ -6,7 +6,7 @@ using Microsoft.Extensions.Logging;
 namespace API_Pessoas.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class PessoasController : ControllerBase
     {
         private IPessoaService _pessoa;
@@ -24,6 +24,8 @@ namespace API_Pessoas.Controllers
         {
             return Ok(_pessoa.FindAll());
         }
+
+
 
         [HttpGet("{id}")]
         public IActionResult Get(long id)
@@ -47,7 +49,7 @@ namespace API_Pessoas.Controllers
             return Ok(_pessoa.Update(pessoa));
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult Delete(long id)
         {
             _pessoa.Delete(id);
