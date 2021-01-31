@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "JRff3ouTw8gQJZpp+oTrQuNmvGWyeNW05BGx+MB8xgJ7Wh8w/VXO2oHwxhD2iWDxJvA5cUHC0ywAg2A7WgH2pA==",
+  "dgSpecHash": "Z/D+XfcMK/eNqbVycL4HwyUhAW5q01zOW6WYuY5T+1TqBvyE2TpU4PovoaoxrEkcnJOfwoEPxuGx9xEpImhYnQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\milen\\OneDrive\\Documentos\\Projetos\\API_Pessoas\\API_Pessoas\\API_Pessoas.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\milen\\.nuget\\packages\\microsoft.aspnetcore.mvc.versioning\\4.2.0\\microsoft.aspnetcore.mvc.versioning.4.2.0.nupkg.sha512",
     "C:\\Users\\milen\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\milen\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",
     "C:\\Users\\milen\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",

@@ -28,6 +28,9 @@ namespace API_Pessoas
             var connection = Configuration["MySqlConnection:MySqlConnectionString"];
             services.AddDbContext<MySqlContext>(options => options.UseMySql(connection));
 
+            //Adicionando servico para gerenciamento de versões da minha API
+            services.AddApiVersioning();
+
             //Injections
             services.AddScoped<IPessoaService, PessoaServiceImplementation>();
 

@@ -3,7 +3,6 @@ using API_Pessoas.Model.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace API_Pessoas.Services.Implementations
 {
@@ -83,11 +82,6 @@ namespace API_Pessoas.Services.Implementations
                 return null;
             }
             
-        }
-
-        private bool Exists(long id)
-        {
-            return _context.Pessoa.Any(p => p.id.Equals(id));
         }
 
     }
