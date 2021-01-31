@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace API_Pessoas.Services
+namespace API_Pessoas.Business
 {
-    public interface IPessoaService
+    public interface IPessoaBusiness
     {
         tbPessoa Create(tbPessoa person);
         tbPessoa FindByID(long id);

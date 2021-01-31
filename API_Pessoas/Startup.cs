@@ -1,6 +1,8 @@
+using API_Pessoas.Business;
+using API_Pessoas.Business.Implementations;
 using API_Pessoas.Model.Context;
-using API_Pessoas.Services;
-using API_Pessoas.Services.Implementations;
+using API_Pessoas.Repository;
+using API_Pessoas.Repository.Implementations;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -26,14 +28,14 @@ namespace API_Pessoas
 
             //Adicionando DbContext
             var connection = Configuration["MySqlConnection:MySqlConnectionString"];
-            services.AddDbContext<MySqlContext>(options => options.UseMySql(connection));
+            services.AddDbContext<IPersonRepository>(options => options.UseMySql(connection));
 
             //Adicionando servico para gerenciamento de versões da minha API
             services.AddApiVersioning();
 
             //Injections
-            services.AddScoped<IPessoaService, PessoaServiceImplementation>();
-
+            services.AddScoped<IPessoaBusiness, PessoaBusinessImplementation>();
+            services.AddScoped<IPessoaRepository, PessoaRepositoryImplementation>();
 
         }
 

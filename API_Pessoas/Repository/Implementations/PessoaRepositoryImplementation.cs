@@ -4,13 +4,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace API_Pessoas.Services.Implementations
+namespace API_Pessoas.Repository.Implementations
 {
-    public class PessoaServiceImplementation : IPessoaService
+    public class PessoaRepositoryImplementation : IPessoaRepository
     {
-        private MySqlContext _context;
+        private IPersonRepository _context;
 
-        public PessoaServiceImplementation(MySqlContext context)
+        public PessoaRepositoryImplementation(IPersonRepository context)
         {
             _context = context;
         }

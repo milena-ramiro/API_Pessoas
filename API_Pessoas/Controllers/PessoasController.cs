@@ -1,5 +1,5 @@
-﻿using API_Pessoas.Model;
-using API_Pessoas.Services;
+﻿using API_Pessoas.Business;
+using API_Pessoas.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -10,11 +10,11 @@ namespace API_Pessoas.Controllers
     [Route("api/[controller]/v{version:apiVersion}")]
     public class PessoasController : ControllerBase
     {
-        private IPessoaService _pessoa;
+        private IPessoaBusiness _pessoa;
 
         private readonly ILogger<PessoasController> _logger;
 
-        public PessoasController(ILogger<PessoasController> logger, IPessoaService pessoa)
+        public PessoasController(ILogger<PessoasController> logger, IPessoaBusiness pessoa)
         {
             _logger = logger;
             _pessoa = pessoa;

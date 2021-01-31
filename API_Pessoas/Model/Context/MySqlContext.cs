@@ -2,11 +2,11 @@
 
 namespace API_Pessoas.Model.Context
 {
-    public class MySqlContext : DbContext
+    public class IPersonRepository : DbContext
     {
-        public MySqlContext() { }
+        public IPersonRepository() { }
 
-        public MySqlContext(DbContextOptions<MySqlContext> options) : base(options) { }
+        public IPersonRepository(DbContextOptions<IPersonRepository> options) : base(options) { }
 
         public DbSet<tbPessoa> Pessoa { get; set; }
     }
