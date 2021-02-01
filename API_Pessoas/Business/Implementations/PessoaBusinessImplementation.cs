@@ -1,8 +1,6 @@
 ﻿using API_Pessoas.Model;
 using API_Pessoas.Repository;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace API_Pessoas.Business.Implementations
 {
@@ -13,6 +11,16 @@ namespace API_Pessoas.Business.Implementations
         public PessoaBusinessImplementation(IPessoaRepository repository)
         {
             _repository = repository;
+        }
+        
+        public List<tbPessoa> FindAll()
+        {
+            return _repository.FindAll();
+        }
+
+        public tbPessoa FindByID(long id)
+        {
+            return _repository.FindByID(id);
         }
 
 
@@ -27,15 +35,6 @@ namespace API_Pessoas.Business.Implementations
             _repository.Delete(id);
         }
 
-        public List<tbPessoa> FindAll()
-        {
-            return _repository.FindAll();
-        }
-
-        public tbPessoa FindByID(long id)
-        {
-            return _repository.FindByID(id);
-        }
 
         public tbPessoa Update(tbPessoa person)
         {

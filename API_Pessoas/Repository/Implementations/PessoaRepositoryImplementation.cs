@@ -8,11 +8,23 @@ namespace API_Pessoas.Repository.Implementations
 {
     public class PessoaRepositoryImplementation : IPessoaRepository
     {
-        private IPersonRepository _context;
+        
+        
+        private MySqlContext _context;
 
-        public PessoaRepositoryImplementation(IPersonRepository context)
+        public PessoaRepositoryImplementation(MySqlContext context)
         {
             _context = context;
+        }
+        
+        public List<tbPessoa> FindAll()
+        {
+            return _context.Pessoa.ToList();
+        }
+
+        public tbPessoa FindByID(long id)
+        {
+            return _context.Pessoa.Where(p => p.id == id).FirstOrDefault();
         }
 
 
@@ -34,7 +46,7 @@ namespace API_Pessoas.Repository.Implementations
 
         public void Delete(long id)
         {
-            var result = _context.Pessoa.Where(p => p.id == (id)).FirstOrDefault();
+            var result = FindByID(id);
 
             if (result != null)
             {
@@ -50,19 +62,11 @@ namespace API_Pessoas.Repository.Implementations
             }
         }
 
-        public List<tbPessoa> FindAll()
-        {
-            return _context.Pessoa.ToList();
-        }
-
-        public tbPessoa FindByID(long id)
-        {
-            return _context.Pessoa.Where(p => p.id == id).FirstOrDefault();
-        }
+        
 
         public tbPessoa Update(tbPessoa person)
         {
-            var result = _context.Pessoa.Where(p => p.id == person.id).FirstOrDefault();
+            var result = FindByID(person.id);
 
             if(result != null)
             {
