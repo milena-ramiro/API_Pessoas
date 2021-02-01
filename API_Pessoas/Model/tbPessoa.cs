@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+using API_Pessoas.Model.Base;
 
 namespace API_Pessoas.Model
 {
     [Table("tbpessoa")]
-    public class tbPessoa
+    public class tbPessoa : BaseEntity
     {
-        [Column("id")]
-        public int id { get; set; }
-
         [Column("first_name")]
         public string FirstName { get; set; }
 

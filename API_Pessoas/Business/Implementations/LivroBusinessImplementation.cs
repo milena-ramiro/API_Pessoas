@@ -1,15 +1,15 @@
 using System.Collections.Generic;
 using API_Pessoas.Model;
 using API_Pessoas.Repository;
-using API_Pessoas.Repository.Implementations;
+using API_Pessoas.Repository.Generics;
 
 namespace API_Pessoas.Business.Implementations
 {
     public class LivroBusinessImplementation : ILivroBusiness
     {
-        private readonly ILivroRepository _repository;
+        private readonly IRepository<tbLivro> _repository;
             
-        public LivroBusinessImplementation(ILivroRepository repository)
+        public LivroBusinessImplementation(IRepository<tbLivro> repository)
         {
             _repository = repository;
         }
