@@ -1,4 +1,5 @@
 using API_Pessoas.Business;
+using API_Pessoas.Data.VO;
 using API_Pessoas.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -35,14 +36,14 @@ namespace API_Pessoas.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody] tbLivro livro)
+        public IActionResult Post([FromBody] LivroVO livro)
         {
             if (livro == null) return BadRequest();
             return Ok(_livro.Create(livro));
         }
 
         [HttpPut]
-        public IActionResult Put([FromBody] tbLivro livro)
+        public IActionResult Put([FromBody] LivroVO livro)
         {
             if (livro == null) return BadRequest();
             return Ok(_livro.Update(livro));
