@@ -1,4 +1,5 @@
-﻿using API_Pessoas.Business;
+﻿using System.Collections.Generic;
+using API_Pessoas.Business;
 using API_Pessoas.Data.VO;
 using API_Pessoas.HyperMedia.Filters;
 using API_Pessoas.Model;
@@ -25,6 +26,10 @@ namespace API_Pessoas.Controllers
         
 
         [HttpGet]
+        [ProducesResponseType((200), Type = typeof(List<PessoaVO>))]
+        [ProducesResponseType((204))]
+        [ProducesResponseType((400))]
+        [ProducesResponseType((401))]
         [TypeFilter(typeof(HypermediaFilter))]
         public IActionResult Get()
         {
@@ -32,6 +37,10 @@ namespace API_Pessoas.Controllers
         }
 
         [HttpGet("{id}")]
+        [ProducesResponseType((200), Type = typeof(PessoaVO))]
+        [ProducesResponseType((204))]
+        [ProducesResponseType((400))]
+        [ProducesResponseType((401))]
         [TypeFilter(typeof(HypermediaFilter))]
         public IActionResult Get(long id)
         {
@@ -41,6 +50,9 @@ namespace API_Pessoas.Controllers
         }
 
         [HttpPost]
+        [ProducesResponseType((200), Type = typeof(PessoaVO))]
+        [ProducesResponseType((400))]
+        [ProducesResponseType((401))]
         [TypeFilter(typeof(HypermediaFilter))]
         public IActionResult Post([FromBody] PessoaVO pessoa)
         {
@@ -49,6 +61,9 @@ namespace API_Pessoas.Controllers
         }
 
         [HttpPut]
+        [ProducesResponseType((200), Type = typeof(PessoaVO))]
+        [ProducesResponseType((400))]
+        [ProducesResponseType((401))]
         [TypeFilter(typeof(HypermediaFilter))]
         public IActionResult Put([FromBody] PessoaVO pessoa)
         {
@@ -57,6 +72,9 @@ namespace API_Pessoas.Controllers
         }
 
         [HttpDelete("{id}")]
+        [ProducesResponseType((204))]
+        [ProducesResponseType((400))]
+        [ProducesResponseType((401))]
         public IActionResult Delete(long id)
         {
             _pessoa.Delete(id);
