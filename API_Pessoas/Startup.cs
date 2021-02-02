@@ -9,11 +9,13 @@ using API_Pessoas.Repository;
 using API_Pessoas.Repository.Generics;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Rewrite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Net.Http.Headers;
+using Microsoft.OpenApi.Models;
 using Serilog;
 
 namespace API_Pessoas
@@ -68,6 +70,22 @@ namespace API_Pessoas
             //Adicionando servico para gerenciamento de vers�es da minha API
             services.AddApiVersioning();
 
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1",
+                    new OpenApiInfo
+                    {
+                        Title = "API CRUD WITH ASP .NET CORE 5 AND MYSQL",
+                        Version = "v1",
+                        Description = "API RESTful developed in course",
+                        Contact = new OpenApiContact
+                        {
+                            Name = "Leandro Costa",
+                            Url = new Uri("https://github.com/milena-ramiro")
+                        }
+                    });
+            });
+
             //Injections
             services.AddScoped<IPessoaBusiness, PessoaBusinessImplementation>();
             services.AddScoped<ILivroBusiness, LivroBusinessImplementation>();
@@ -85,6 +103,16 @@ namespace API_Pessoas
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Course - v1");
+            });
+
+            var option = new RewriteOptions();
+            option.AddRedirect("^$", "swagger");
+            app.UseRewriter(option);
 
             app.UseAuthorization();
 

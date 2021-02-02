@@ -80,3 +80,7 @@ C:\Users\milenapc\Documents\Estudos\API_Pessoas\API_Pessoas\obj\Debug\net5.0\API
 C:\Users\milenapc\Documents\Estudos\API_Pessoas\API_Pessoas\obj\Debug\net5.0\ref\API_Pessoas.dll
 C:\Users\milenapc\Documents\Estudos\API_Pessoas\API_Pessoas\obj\Debug\net5.0\API_Pessoas.pdb
 C:\Users\milenapc\Documents\Estudos\API_Pessoas\API_Pessoas\obj\Debug\net5.0\API_Pessoas.genruntimeconfig.cache
+C:\Users\milenapc\Documents\Estudos\API_Pessoas\API_Pessoas\bin\Debug\net5.0\Microsoft.OpenApi.dll
+C:\Users\milenapc\Documents\Estudos\API_Pessoas\API_Pessoas\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\milenapc\Documents\Estudos\API_Pessoas\API_Pessoas\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\milenapc\Documents\Estudos\API_Pessoas\API_Pessoas\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
