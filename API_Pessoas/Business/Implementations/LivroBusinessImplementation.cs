@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using API_Pessoas.Data.Converter.Implementations;
 using API_Pessoas.Data.VO;
 using API_Pessoas.Model;
-using API_Pessoas.Repository;
 using API_Pessoas.Repository.Generics;
 
 namespace API_Pessoas.Business.Implementations

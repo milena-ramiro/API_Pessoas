@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using API_Pessoas.Business;
 using API_Pessoas.Business.Implementations;
+using API_Pessoas.HyperMedia.Enricher;
+using API_Pessoas.HyperMedia.Filters;
 using API_Pessoas.Model.Context;
 using API_Pessoas.Repository;
 using API_Pessoas.Repository.Generics;
@@ -11,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Net.Http.Headers;
 using Serilog;
 
 namespace API_Pessoas
@@ -45,6 +48,22 @@ namespace API_Pessoas
             {
                 MigrateDatabase(connection);
             }
+
+            
+            //Aceitar serviços XML
+            services.AddMvc(options =>
+            {
+                options.RespectBrowserAcceptHeader = true;
+                
+                options.FormatterMappings.SetMediaTypeMappingForFormat("xml", MediaTypeHeaderValue.Parse("application/xml"));
+                options.FormatterMappings.SetMediaTypeMappingForFormat("json", MediaTypeHeaderValue.Parse("application/json"));
+                
+            }).AddXmlSerializerFormatters();
+
+            var filterOptions = new HypermediaFilterOptions();
+            filterOptions.ContentResponseEnricherList.Add(new PersonEnricher());
+
+            services.AddSingleton(filterOptions);
             
             //Adicionando servico para gerenciamento de vers�es da minha API
             services.AddApiVersioning();
@@ -72,6 +91,7 @@ namespace API_Pessoas
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapControllerRoute("DefaultApi", "{controller=Values}/{id?}");
             });
         }
 

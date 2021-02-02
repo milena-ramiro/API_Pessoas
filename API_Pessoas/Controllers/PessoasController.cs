@@ -1,5 +1,6 @@
 ﻿using API_Pessoas.Business;
 using API_Pessoas.Data.VO;
+using API_Pessoas.HyperMedia.Filters;
 using API_Pessoas.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -20,16 +21,18 @@ namespace API_Pessoas.Controllers
             _logger = logger;
             _pessoa = pessoa;
         }
+        
+        
 
         [HttpGet]
+        [TypeFilter(typeof(HypermediaFilter))]
         public IActionResult Get()
         {
             return Ok(_pessoa.FindAll());
         }
 
-
-
         [HttpGet("{id}")]
+        [TypeFilter(typeof(HypermediaFilter))]
         public IActionResult Get(long id)
         {
             var person = _pessoa.FindByID(id);
@@ -38,6 +41,7 @@ namespace API_Pessoas.Controllers
         }
 
         [HttpPost]
+        [TypeFilter(typeof(HypermediaFilter))]
         public IActionResult Post([FromBody] PessoaVO pessoa)
         {
             if (pessoa == null) return BadRequest();
@@ -45,6 +49,7 @@ namespace API_Pessoas.Controllers
         }
 
         [HttpPut]
+        [TypeFilter(typeof(HypermediaFilter))]
         public IActionResult Put([FromBody] PessoaVO pessoa)
         {
             if (pessoa == null) return BadRequest();
