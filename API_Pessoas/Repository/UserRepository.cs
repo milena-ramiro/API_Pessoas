@@ -17,6 +17,13 @@ namespace API_Pessoas.Repository
             _context = context;
         }
         
+        
+        public tbUsuario ValidateCredentials(string userName)
+        {
+            return _context.Usuario.SingleOrDefault(u => u.UserName == userName);
+        }
+
+
         public tbUsuario ValidateCredentials(UsuarioVO user)
         {
             var pass = ComputeHash(user.Password, new SHA256CryptoServiceProvider());
@@ -26,7 +33,17 @@ namespace API_Pessoas.Repository
 
             return usuario;
         }
-        
+
+        public bool RevokeToken(string userName)
+        {
+            var user = _context.Usuario.SingleOrDefault(u => u.UserName == userName);
+
+            if (user == null) return false;
+            user.RefreshToken = null;
+            _context.SaveChanges();
+            return true;
+        }
+
         public tbUsuario RefreshUserInfo(tbUsuario user)
         {
             if (!_context.Usuario.Any(u => u.Id == user.Id))

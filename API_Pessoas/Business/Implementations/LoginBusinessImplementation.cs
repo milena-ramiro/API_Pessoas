@@ -6,6 +6,7 @@ using API_Pessoas.Configurations;
 using API_Pessoas.Data.VO;
 using API_Pessoas.Repository;
 using API_Pessoas.Services;
+using API_Pessoas.Services.Implementations;
 
 namespace API_Pessoas.Business.Implementations
 {
@@ -61,6 +62,44 @@ namespace API_Pessoas.Business.Implementations
                 accessToken,
                 refreshToken
                 );
+        }
+
+        
+        public TokenVO ValidateCredentials(TokenVO token)
+        {
+            //gerar token
+            var accessToken = token.AcessToken;
+            var refreshToken = token.RefreshToken;
+
+            var principal = _service.GetPrincipalFromExpiredToken(accessToken);
+            var username = principal.Identity.Name;
+            var user = _repository.ValidateCredentials(username);
+            
+            if (user == null || user.RefreshToken != refreshToken ||
+                user.RefreshTokenExpiryTime >= DateTime.Now) return null;
+            
+            accessToken = _service.GenerateAccessToken(principal.Claims);
+            refreshToken = _service.GenerateRefreshToken();
+
+            user.RefreshToken = refreshToken;
+            
+            //definir quando foi gerado token e quando vai expirar
+            DateTime createDate = DateTime.Now;
+            DateTime expirationDate = createDate.AddMinutes(_configuration.Minutes);
+            
+            //setando informações do token e retornando para o controller
+            return new TokenVO(
+                true,
+                createDate.ToString(DATE_FORMAT),
+                expirationDate.ToString(DATE_FORMAT),
+                accessToken,
+                refreshToken
+            );
+        }
+
+        public bool RevokeToken(string userName)
+        {
+            return _repository.RevokeToken(userName);
         }
     }
 }
