@@ -10,5 +10,6 @@ namespace API_Pessoas.Model.Context
 
         public DbSet<tbPessoa> Pessoa { get; set; }
         public DbSet<tbLivro> Livro { get; set; }
+        public DbSet<tbUsuario> Usuario { get; set; }
     }
 }

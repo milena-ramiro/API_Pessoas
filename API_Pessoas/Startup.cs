@@ -1,12 +1,18 @@
 using System;
 using System.Collections.Generic;
+using System.Text;
 using API_Pessoas.Business;
 using API_Pessoas.Business.Implementations;
+using API_Pessoas.Configurations;
 using API_Pessoas.HyperMedia.Enricher;
 using API_Pessoas.HyperMedia.Filters;
 using API_Pessoas.Model.Context;
 using API_Pessoas.Repository;
 using API_Pessoas.Repository.Generics;
+using API_Pessoas.Services;
+using API_Pessoas.Services.Implementations;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Rewrite;
@@ -14,6 +20,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.Net.Http.Headers;
 using Microsoft.OpenApi.Models;
 using Serilog;
@@ -40,6 +48,42 @@ namespace API_Pessoas
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //Adicionar as configurações do token setadas no appsettings.json
+            var tokenConfigurations = new TokenConfiguration();
+            new ConfigureFromConfigurationOptions<TokenConfiguration>(
+                Configuration.GetSection("TokenConfiguration")
+            ).Configure(tokenConfigurations);
+
+            services.AddSingleton(tokenConfigurations);
+            
+            //definir parametros de autenticação
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = tokenConfigurations.Issuer,
+                    ValidAudience = tokenConfigurations.Audience,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenConfigurations.Secret))
+                };
+            });
+            
+            //autorizar autenticação
+            services.AddAuthorization(auth =>
+            {
+                auth.AddPolicy("Bearer", new AuthorizationPolicyBuilder()
+                    .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
+                    .RequireAuthenticatedUser().Build());
+            });
+            
+            
             //Adicionar CORS
             services.AddCors(options => options.AddDefaultPolicy(builder =>
             {
@@ -75,7 +119,7 @@ namespace API_Pessoas
 
             services.AddSingleton(filterOptions);
             
-            //Adicionando servico para gerenciamento de vers�es da minha API
+            //Adicionando servico para gerenciamento de versoes da minha API
             services.AddApiVersioning();
 
             services.AddSwaggerGen(c =>
@@ -88,7 +132,7 @@ namespace API_Pessoas
                         Description = "API RESTful developed in course",
                         Contact = new OpenApiContact
                         {
-                            Name = "Leandro Costa",
+                            Name = "Milena Ramiro",
                             Url = new Uri("https://github.com/milena-ramiro")
                         }
                     });
@@ -97,7 +141,15 @@ namespace API_Pessoas
             //Injections
             services.AddScoped<IPessoaBusiness, PessoaBusinessImplementation>();
             services.AddScoped<ILivroBusiness, LivroBusinessImplementation>();
+            services.AddScoped<ILoginBusiness, LoginBusinessImplementation>();
+            
+            
+            services.AddTransient<ITokenService, TokenService>();
+            
+            services.AddScoped<IUserRepository, UserRepository>();
+            
             services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -43,6 +43,7 @@ C:\Users\milenapc\Documents\Estudos\API_Pessoas\API_Pessoas\bin\Debug\net5.0\API
 C:\Users\milenapc\Documents\Estudos\API_Pessoas\API_Pessoas\bin\Debug\net5.0\ref\API_Pessoas.dll
 C:\Users\milenapc\Documents\Estudos\API_Pessoas\API_Pessoas\bin\Debug\net5.0\API_Pessoas.pdb
 C:\Users\milenapc\Documents\Estudos\API_Pessoas\API_Pessoas\bin\Debug\net5.0\Evolve.dll
+C:\Users\milenapc\Documents\Estudos\API_Pessoas\API_Pessoas\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\milenapc\Documents\Estudos\API_Pessoas\API_Pessoas\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.Versioning.dll
 C:\Users\milenapc\Documents\Estudos\API_Pessoas\API_Pessoas\bin\Debug\net5.0\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\milenapc\Documents\Estudos\API_Pessoas\API_Pessoas\bin\Debug\net5.0\Microsoft.Bcl.HashCode.dll
@@ -51,6 +52,11 @@ C:\Users\milenapc\Documents\Estudos\API_Pessoas\API_Pessoas\bin\Debug\net5.0\Mic
 C:\Users\milenapc\Documents\Estudos\API_Pessoas\API_Pessoas\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Abstractions.dll
 C:\Users\milenapc\Documents\Estudos\API_Pessoas\API_Pessoas\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Relational.dll
 C:\Users\milenapc\Documents\Estudos\API_Pessoas\API_Pessoas\bin\Debug\net5.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\milenapc\Documents\Estudos\API_Pessoas\API_Pessoas\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\milenapc\Documents\Estudos\API_Pessoas\API_Pessoas\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\milenapc\Documents\Estudos\API_Pessoas\API_Pessoas\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\milenapc\Documents\Estudos\API_Pessoas\API_Pessoas\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\milenapc\Documents\Estudos\API_Pessoas\API_Pessoas\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\milenapc\Documents\Estudos\API_Pessoas\API_Pessoas\bin\Debug\net5.0\Microsoft.OpenApi.dll
 C:\Users\milenapc\Documents\Estudos\API_Pessoas\API_Pessoas\bin\Debug\net5.0\MySqlConnector.dll
 C:\Users\milenapc\Documents\Estudos\API_Pessoas\API_Pessoas\bin\Debug\net5.0\Newtonsoft.Json.dll
@@ -68,6 +74,7 @@ C:\Users\milenapc\Documents\Estudos\API_Pessoas\API_Pessoas\bin\Debug\net5.0\Ser
 C:\Users\milenapc\Documents\Estudos\API_Pessoas\API_Pessoas\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\milenapc\Documents\Estudos\API_Pessoas\API_Pessoas\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\milenapc\Documents\Estudos\API_Pessoas\API_Pessoas\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\milenapc\Documents\Estudos\API_Pessoas\API_Pessoas\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
 C:\Users\milenapc\Documents\Estudos\API_Pessoas\API_Pessoas\obj\Debug\net5.0\API_Pessoas.csprojAssemblyReference.cache
 C:\Users\milenapc\Documents\Estudos\API_Pessoas\API_Pessoas\obj\Debug\net5.0\API_Pessoas.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\milenapc\Documents\Estudos\API_Pessoas\API_Pessoas\obj\Debug\net5.0\API_Pessoas.AssemblyInfoInputs.cache
