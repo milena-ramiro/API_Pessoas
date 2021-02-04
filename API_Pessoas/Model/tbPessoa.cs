@@ -18,6 +18,9 @@ namespace API_Pessoas.Model
 
         [Column("gender")]
         public string Gender { get; set; }
+        
+        [Column("enabled")]
+        public bool Enabled { get; set; }
 
         [Column("addres")]
         public string Addres { get; set; }

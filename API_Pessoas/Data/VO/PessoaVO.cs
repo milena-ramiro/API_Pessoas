@@ -18,6 +18,8 @@ namespace API_Pessoas.Data.VO
         [JsonPropertyName("sexo")]
         public string Gender { get; set; }
         
+        public bool Enabled { get; set; }
+        
         //[JsonIgnore]
         public string Addres { get; set; }
         
