@@ -4778,24 +4778,31 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\milenapc\\.nuget\\packages\\": {}
+    "C:\\Users\\milen\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\milenapc\\Documents\\Estudos\\API_Pessoas\\API_Pessoas\\API_Pessoas.csproj",
+      "projectUniqueName": "C:\\Users\\milen\\OneDrive\\Documentos\\Projetos\\API_Pessoas\\API_Pessoas\\API_Pessoas.csproj",
       "projectName": "API_Pessoas",
-      "projectPath": "C:\\Users\\milenapc\\Documents\\Estudos\\API_Pessoas\\API_Pessoas\\API_Pessoas.csproj",
-      "packagesPath": "C:\\Users\\milenapc\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\milenapc\\Documents\\Estudos\\API_Pessoas\\API_Pessoas\\obj\\",
+      "projectPath": "C:\\Users\\milen\\OneDrive\\Documentos\\Projetos\\API_Pessoas\\API_Pessoas\\API_Pessoas.csproj",
+      "packagesPath": "C:\\Users\\milen\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\milen\\OneDrive\\Documentos\\Projetos\\API_Pessoas\\API_Pessoas\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Microsoft\\Xamarin\\NuGet\\"
+      ],
       "configFilePaths": [
-        "C:\\Users\\milenapc\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\milen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

@@ -36,7 +36,15 @@ namespace API_Pessoas.HyperMedia.Enricher
                 Rel = RelationType.self,
                 Type = ResponseTypeFormat.DefaultPut
             });
-            
+
+            content.Links.Add(new HypermediaLink()
+            {
+                Action = HttpActionVerbo.PATCH,
+                Href = link,
+                Rel = RelationType.self,
+                Type = ResponseTypeFormat.DefaultPatch
+            });
+
             content.Links.Add(new HypermediaLink()
             {
                 Action = HttpActionVerbo.DELETE,

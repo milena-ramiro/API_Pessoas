@@ -73,6 +73,18 @@ namespace API_Pessoas.Controllers
             return Ok(_pessoa.Update(pessoa));
         }
 
+        [HttpPatch("{id}")]
+        [ProducesResponseType((200), Type = typeof(PessoaVO))]
+        [ProducesResponseType((204))]
+        [ProducesResponseType((400))]
+        [ProducesResponseType((401))]
+        [TypeFilter(typeof(HypermediaFilter))]
+        public IActionResult Patch(long id)
+        {
+            var person = _pessoa.Disable(id);
+            return Ok(person);
+        }
+
         [HttpDelete("{id}")]
         [ProducesResponseType((204))]
         [ProducesResponseType((400))]

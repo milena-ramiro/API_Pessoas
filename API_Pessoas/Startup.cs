@@ -147,7 +147,8 @@ namespace API_Pessoas
             services.AddTransient<ITokenService, TokenService>();
             
             services.AddScoped<IUserRepository, UserRepository>();
-            
+            services.AddScoped<IPessoaRepository, PessoaRepository>();
+
             services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
             
         }

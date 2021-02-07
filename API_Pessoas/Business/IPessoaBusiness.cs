@@ -9,6 +9,7 @@ namespace API_Pessoas.Business
         PessoaVO FindByID(long id);
         List<PessoaVO> FindAll();
         PessoaVO Update(PessoaVO person);
+        PessoaVO Disable(long id);
         void Delete(long id);
     }
 }

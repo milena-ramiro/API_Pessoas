@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using API_Pessoas.Data.Converter.Implementations;
 using API_Pessoas.Data.VO;
 using API_Pessoas.Repository.Generics;
+using API_Pessoas.Repository;
 
 namespace API_Pessoas.Business.Implementations
 {
     public class PessoaBusinessImplementation : IPessoaBusiness
     {
-        private readonly IRepository<tbPessoa> _repository;
+        private readonly IPessoaRepository _repository;
         private readonly PessoaConverter _converter;
 
-        public PessoaBusinessImplementation(IRepository<tbPessoa> repository)
+        public PessoaBusinessImplementation(IPessoaRepository repository)
         {
             _repository = repository;
             _converter = new PessoaConverter();
@@ -40,14 +41,19 @@ namespace API_Pessoas.Business.Implementations
             pessoaEntity = _repository.Update(pessoaEntity); //Persistindo a entidade
             return _converter.Parse(pessoaEntity); //Convertendo a entidade resultante para VO e retornando esse dado
         }
-        
+
+        public PessoaVO Disable(long id)
+        {
+            var pessoaEntity = _repository.Disable(id);
+            return _converter.Parse(pessoaEntity);
+        }
+
+
         public void Delete(long id)
         {
             _repository.Delete(id);
         }
 
-
-        
-
+       
     }
 }
