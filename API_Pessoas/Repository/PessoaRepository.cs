@@ -1,8 +1,6 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using API_Pessoas.Data.VO;
 using API_Pessoas.Model;
 using API_Pessoas.Model.Context;
 using API_Pessoas.Repository.Generics;
@@ -36,6 +34,19 @@ namespace API_Pessoas.Repository
             }
 
             return user;
+        }
+
+        public List<tbPessoa> FindByName(string first_name, string last_name)
+        {
+            if(!string.IsNullOrWhiteSpace(first_name) && !string.IsNullOrWhiteSpace(last_name))
+                return _context.Pessoa.Where(p => p.FirstName.Contains(first_name) && p.LastName.Contains(last_name)).ToList();
+            else if(string.IsNullOrWhiteSpace(first_name) && !string.IsNullOrWhiteSpace(last_name))
+                return _context.Pessoa.Where(p => p.LastName.Contains(last_name)).ToList();
+            else if(!string.IsNullOrWhiteSpace(first_name) && string.IsNullOrWhiteSpace(last_name))
+                return _context.Pessoa.Where(p => p.FirstName.Contains(first_name)).ToList();
+
+            return null;
+
         }
     }
 }

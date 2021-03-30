@@ -18,7 +18,10 @@ namespace API_Pessoas.Business.Implementations
         private IUserRepository _repository;
         private readonly ITokenService _service;
 
-        public LoginBusinessImplementation(TokenConfiguration configuration, IUserRepository repository, ITokenService service)
+        public LoginBusinessImplementation(
+            TokenConfiguration configuration,
+            IUserRepository repository,
+            ITokenService service)
         {
             _configuration = configuration;
             _repository = repository;

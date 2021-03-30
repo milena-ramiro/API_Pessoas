@@ -2,7 +2,6 @@
 using API_Pessoas.Business;
 using API_Pessoas.Data.VO;
 using API_Pessoas.HyperMedia.Filters;
-using API_Pessoas.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -27,15 +26,19 @@ namespace API_Pessoas.Controllers
         
         
 
-        [HttpGet]
+        [HttpGet("{sortDirection}/{pageSize}/{currentPage}")]
         [ProducesResponseType((200), Type = typeof(List<PessoaVO>))]
         [ProducesResponseType((204))]
         [ProducesResponseType((400))]
         [ProducesResponseType((401))]
         [TypeFilter(typeof(HypermediaFilter))]
-        public IActionResult Get()
+        public IActionResult Get(
+            [FromQuery] string name, 
+            string sortDirection,
+            int pageSize,
+            int currentPage)
         {
-            return Ok(_pessoa.FindAll());
+            return Ok(_pessoa.FindWithPagedSearch(name, sortDirection, pageSize, currentPage));
         }
 
         [HttpGet("{id}")]
@@ -47,6 +50,19 @@ namespace API_Pessoas.Controllers
         public IActionResult Get(long id)
         {
             var person = _pessoa.FindByID(id);
+            if (person == null) return NotFound();
+            return Ok(person);
+        }
+        
+        [HttpGet("findPersonByName")]
+        [ProducesResponseType((200), Type = typeof(PessoaVO))]
+        [ProducesResponseType((204))]
+        [ProducesResponseType((400))]
+        [ProducesResponseType((401))]
+        [TypeFilter(typeof(HypermediaFilter))]
+        public IActionResult Get([FromQuery] string firstName, string last_name)
+        {
+            var person = _pessoa.FindByName(firstName, last_name);
             if (person == null) return NotFound();
             return Ok(person);
         }

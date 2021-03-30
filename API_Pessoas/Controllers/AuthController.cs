@@ -19,10 +19,10 @@ namespace API_Pessoas.Controllers
         
         [HttpPost]
         [Route("sigin")]
-        public IActionResult SigIn([FromBody] UsuarioVO tokenVO)
+        public IActionResult SigIn([FromBody] UsuarioVO userVO)
         {
-            if (tokenVO == null) return BadRequest("Invalid Client Request");
-            var token = _business.ValidateCredentials(tokenVO);
+            if (userVO == null) return BadRequest("Invalid Client Request");
+            var token = _business.ValidateCredentials(userVO);
             if (token == null) return Unauthorized();
             return Ok(token);
         }
